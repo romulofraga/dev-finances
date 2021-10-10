@@ -235,6 +235,18 @@ table tbody tr td:last-child {
   z-index: 1;
 }
 
+#active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--red);
+  color: #f0f2f5;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 0.2rem;
+}
+
 #form {
   max-width: 500px;
 }

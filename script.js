@@ -7,21 +7,6 @@ const Modal = {
   },
 };
 
-const transactions = [
-  {
-    id: 1,
-    description: "Luz",
-    amount: -124,
-    date: "23/01/2021",
-  },
-  {
-    id: 2,
-    description: "Criação de site",
-    amount: 4000,
-    date: "23/01/2021",
-  },
-];
-
 const Storage = {
   get() {
     return JSON.parse(localStorage.getItem("dev.finances:transactions")) || [];
@@ -108,6 +93,22 @@ const DOM = {
       `;
 
     return html;
+  },
+
+  innerHTMLToast(message) {
+    const html = `<strong id="active">${message}</strong>`;
+
+    const div = document.createElement("div");
+
+    div.innerHTML = html;
+
+    document.querySelector("#toast").appendChild(div);
+
+    setTimeout(() => {
+      document.querySelector("#toast").removeChild(div);
+    }, 2000);
+
+    console.log(div);
   },
 
   updateBalance() {
@@ -207,7 +208,8 @@ const Form = {
 
       Modal.close();
     } catch (error) {
-      alert(error.message);
+      DOM.innerHTMLToast(error.message);
+      // alert(error.mes  sage);
     }
   },
 };
